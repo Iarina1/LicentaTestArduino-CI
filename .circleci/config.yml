@@ -12,10 +12,8 @@ jobs:
             bundle install
       - run:
           name: Test
-          command: |
-            bundle exec arduino_ci_remote.rb | tee first_output.txt
-            ls -la
-            python3 .circleci/extractOtput.py | tee /tmp/test_output.txt
+          command:
+            bundle exec arduino_ci_remote.rb | tee /tmp/test_output.txt
       - store_artifacts:
             path: /tmp/test_output.txt
             destination: test_output
